@@ -1,16 +1,14 @@
 pipeline {
   agent any
     
-  tools {
-    nodejs "nodejs"
-    pm2 "pm2"
-  }
+  tools {nodejs "nodejs"}
     
   stages {
         
     stage('Build') {
       steps {
          echo 'Installing dependencies.....'
+         sh pm2 list 
         sh 'npm install'
         echo 'Making build.....'
         sh 'npm run tsc'
@@ -24,7 +22,7 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Deploying applications'
-        sh 'node server/server.js'
+        sh 'pm2 start server/server.js'
       }
     }
   }
