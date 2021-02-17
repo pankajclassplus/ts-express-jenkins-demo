@@ -21,7 +21,7 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Deploying applications'
-        sh 'pm2 reload server/server.js'
+        sh 'pm2 startOrReload ecosystem.config.js'
       }
     }
   }
