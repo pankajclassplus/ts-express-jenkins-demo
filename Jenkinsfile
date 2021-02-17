@@ -23,6 +23,7 @@ pipeline {
       steps {
         echo 'Deploying applications'
         sh 'pm2 start server/server.js'
+        sh 'pm2 restart server/server.js'
       }
     }
   }
