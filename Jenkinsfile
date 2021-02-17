@@ -8,7 +8,6 @@ pipeline {
     stage('Build') {
       steps {
          echo 'Installing dependencies.....'
-         sh 'pm2 list '
         sh 'npm install'
         echo 'Making build.....'
         sh 'npm run tsc'
@@ -22,8 +21,7 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Deploying applications'
-        sh 'pm2 start server/server.js'
-        sh 'pm2 restart server/server.js'
+        sh 'pm2 reload server/server.js'
       }
     }
   }
