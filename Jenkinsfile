@@ -22,7 +22,7 @@ pipeline {
       steps {
         echo 'Deploying applications'
         sh 'pm2 stop server/server.js 2> /dev/null &'
-        sh 'pm2 start server/server.js'
+        sh 'pm2 start -f server/server.js'
       }
     }
   }
