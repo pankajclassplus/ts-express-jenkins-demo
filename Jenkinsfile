@@ -8,7 +8,7 @@ pipeline {
     stage('Build') {
       steps {
          echo 'Installing dependencies.....'
-         sh pm2 list 
+         sh 'pm2 list '
         sh 'npm install'
         echo 'Making build.....'
         sh 'npm run tsc'
